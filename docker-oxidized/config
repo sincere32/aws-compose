@@ -1,0 +1,112 @@
+---
+username: userxxx
+password: passxx
+model: junos
+resolve_dns: false
+interval: 43200
+use_syslog: true
+log: /home/oxidized/.config/oxidized/log/oxidized.log
+debug: true
+rest: 0.0.0.0:8888
+threads: 30
+timeout: 20
+retries: 3
+prompt: !ruby/regexp /^([\w.@-]+[#>]\s?)$/
+next_adds_job: false
+pid: "/home/oxidized/.config/oxidized/pid"
+
+crash:
+  directory: "/home/oxidized/.config/oxidized/crashes"
+  hostnames: false
+stats:
+  history_size: 10
+  
+# vars: {}
+#  ssh_no_exec: true
+
+vars:
+  enable: enable
+  ssh_no_keepalive: false
+  remove_secret: true
+  auth_methods: [ "none", "password", "keyboard-interactive", "publickey" ]
+
+input:
+  default: ssh, telnet
+  debug: false
+  ssh:
+    secure: false
+  map:
+    verify_host_key: never
+    utf8_encoded: true
+  ftp:
+    passive: true
+    utf8_encoded: true
+
+output:
+  default: git
+  git:
+    user: userxx
+    email: mailxx@mailxxx.com
+    repo: "/home/oxidized/.config/oxidized/output/repository/.git"
+  file:
+    directory: "/home/oxidized/.config/oxidized/output/configs"
+
+source:
+  default: csv
+  csv:
+    file: "/home/oxidized/.config/oxidized/router.db"
+    delimiter: !ruby/regexp /:/
+    map:
+      name: 0
+      ip: 1
+      model: 2
+      group: 3
+    vars_map:
+      ssh_port: 4
+      enable: 5
+
+model_map:
+  juniper: junos
+  cisco: ios
+  mikrotik: routeros
+  ciscosmb: ciscosmb
+  planet: planet
+#  zyxel: zynoscli
+  tplink: tplink
+
+groups:
+  cisco:
+    username: userxxx
+    password: passxxx
+  juniper:
+    username: userxxx
+    password: passxxx
+  mikrotik:
+    username: userxxx
+    password: passxxx
+  ciscosmb:
+    username: userxxx
+    password: passxxx
+  planet:
+    username: userxxx
+    password: passxxx
+    vars:
+       enable: enable
+       remove_secret: true
+#  zyxel:
+#    username: admin
+#    password: "1234"
+  tplink:
+    username: userxxx
+    password: passxxx
+    vars:
+       enable: enable
+       remove_secret: true
+
+gpg: false
+
+#hooks:
+#  node_failed:
+#    type: exec
+#    events: [node_fail]
+#    cmd: echo Failed to get configuration from $OX_NODE_NAME - $OX_NODE_IP via SSH | mutt -s "[ALERT] Connection to $OX_NODE_NAME via SSH failed" mailxxx@mailxxx.com -e "my_hdr From:mailxxx@mailxxx.com"

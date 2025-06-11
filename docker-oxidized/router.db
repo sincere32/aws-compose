@@ -1,0 +1,5 @@
+#Device Juniper MX-480
+router1:192.168.1.12:juniper:juniper
+
+#Device Mikrotik
+mikrotik1:192.168.1.1:mikrotik:mikrotik:36666

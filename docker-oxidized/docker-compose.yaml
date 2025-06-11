@@ -1,0 +1,17 @@
+---
+version: "3"
+services:
+  oxidized:
+    restart: always
+    container_name: oxidized
+    image: oxidized/oxidized:latest
+    ports:
+      - 8888:8888/tcp
+    environment:
+      CONFIG_RELOAD_INTERVAL: 600
+    volumes:
+       - /opt/oxidized:/home/oxidized/.config/oxidized/
+       - /opt/oxidized/model:/var/lib/gems/3.2.0/gems/oxidized-0.33.0/lib/oxidized/model/
+#       - disk-oxidized:/home/oxidized/.config/oxidized/
+# volumes:
+#  disk-oxidized
