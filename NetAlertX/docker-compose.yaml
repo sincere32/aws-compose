@@ -14,10 +14,10 @@ services:
       # (optional) useful for debugging if you have issues setting up the container
       - /opt/netalertx/docker_logs:/app/log
       # (API: OPTION 1) use for performance
-      - type: tmpfs
-        target: /app/api
+#      - type: tmpfs
+#        target: /app/api
       # (API: OPTION 2) use when debugging issues 
-       -  /opt/netalertx/docker_api/:/app/api
+#       -  /opt/netalertx/docker_api/:/app/api
     environment:
       - TZ=Asia/Bangkok     
       - PORT=20211
