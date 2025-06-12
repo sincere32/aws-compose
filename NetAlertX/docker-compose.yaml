@@ -9,15 +9,15 @@ services:
     network_mode: "host"        
     restart: unless-stopped
     volumes:
-      - ${APP_DATA_LOCATION}/:/app/config
-      - ${APP_DATA_LOCATION}/db/:/app/db/      
+      - /opt/netalertx/docker_appdata/:/app/config
+      - /opt/netalertx/docker_appdata/db/:/app/db/      
       # (optional) useful for debugging if you have issues setting up the container
-      - ${LOGS_LOCATION}:/app/log
+      - /opt/netalertx/docker_logs:/app/log
       # (API: OPTION 1) use for performance
       - type: tmpfs
         target: /app/api
       # (API: OPTION 2) use when debugging issues 
-       -  ${APP_DATA_API}:/app/api
+       -  /opt/netalertx/docker_api/:/app/api
     environment:
-      - TZ=${TZ}      
-      - PORT=${PORT}
+      - TZ=Asia/Bangkok     
+      - PORT=20211
