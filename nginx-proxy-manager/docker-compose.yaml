@@ -16,6 +16,8 @@ services:
       DB_MYSQL_PASSWORD: npm
       DB_MYSQL_NAME: npm
       DB_MYSQL_GRANT_HOSTS: "%"
+      INITIAL_ADMIN_EMAIL: sincere@sincere.com
+      INITIAL_ADMIN_PASSWORD: sincere12345
     volumes:
       - ./opt/nginx-proxy-manager/data/:/data
       - ./opt/nginx-proxy-manager/letsencrypt/:/etc/letsencrypt
