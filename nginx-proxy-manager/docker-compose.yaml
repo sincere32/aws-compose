@@ -17,8 +17,8 @@ services:
       DB_MYSQL_NAME: npm
       DB_MYSQL_GRANT_HOSTS: "%"
     volumes:
-      - ./data/nginx-proxy:/data
-      - ./letsencrypt:/etc/letsencrypt
+      - ./opt/nginx-proxy-manager/data/:/data
+      - ./opt/nginx-proxy-manager/letsencrypt/:/etc/letsencrypt
     depends_on:
       - db
   db:
@@ -32,4 +32,4 @@ services:
       MYSQL_PASSWORD: npm
       DB_MYSQL_INIT_CONNECT: "GRANT ALL PRIVILEGES ON npm.* TO 'npm'@'%';"
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ./opt/nginx-proxy-manager/data/mysql:/var/lib/mysql
