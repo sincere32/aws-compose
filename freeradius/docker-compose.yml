@@ -9,6 +9,7 @@ services:
     ports:
      - "1812:1812"
      - "1813:1813"
+     - "3306:3306"
     volumes:
     - "/opt/freeradius/config/freeradius:/etc/freeradius"
     - "/opt/freeradius/logs:/var/log/freeradius"
@@ -34,5 +35,7 @@ services:
       MYSQL_USER: radius
       MYSQL_PASSWORD: radpass
       MYSQL_ROOT_HOST: "%"
-      MYSQL_PORT: 3306
+    ports:
+      - "3306:3306"
+      - "33060:33060"
     restart: always
