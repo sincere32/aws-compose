@@ -25,7 +25,7 @@ services:
     image: mysql:8.0
     container_name: freeradius-mysql
     volumes:
-     - "./opt/freeradius/mysql/conf.d:/etc/mysql/conf.d
+     - "./opt/freeradius/mysql/conf.d:/etc/mysql/conf.d"
      - "./opt/freeradius/mysql/initdb.d:/docker-entrypoint-initdb.d"
      - "./opt/freeradius/mysql/data:/var/lib/mysql"
     environment:
