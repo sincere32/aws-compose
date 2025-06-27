@@ -4,8 +4,8 @@ services:
   radius:
     image: freeradius/freeradius-server:3.2.7
     container_name: freeradius
-    depends_on:
-      - mysql
+#    depends_on:
+#      - mysql
     ports:
      - "1812:1812"
      - "1813:1813"
