@@ -22,7 +22,7 @@ services:
     restart: always
 
   mysql:
-    image: mysql
+    image: mysql:8.4.0-oraclelinux8
     container_name: freeradius-mysql
     volumes:
      - "/opt/freeradius/mysql/conf.d:/etc/mysql/conf.d"
