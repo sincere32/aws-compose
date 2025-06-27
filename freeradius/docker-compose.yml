@@ -22,11 +22,11 @@ services:
     restart: always
 
   mysql:
-    image: mysql:8.0
+    image: mysql
     container_name: freeradius-mysql
     volumes:
      - "/opt/freeradius/mysql/conf.d:/etc/mysql/conf.d"
-     - "/opt/freeradius/mysql/initdb.d:/docker-entrypoint-initdb.d"
+     - "/opt/freeradius/mysql/initdb.d/radius.sql:/docker-entrypoint-initdb.d/radius.sql"
      - "/opt/freeradius/mysql/data:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: 111111
