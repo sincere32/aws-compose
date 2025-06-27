@@ -1,0 +1,37 @@
+version: "3.6"
+
+services:
+  radius:
+    image: freeradius/freeradius-server:3.0.17
+    container_name: freeradius
+    depends_on:
+      - mysql
+    ports:
+     - "1812:1812"
+     - "1813:1813"
+    volumes:
+    - "./opt/freeradius/config/freeradius:/etc/freeradius"
+    - "./opt/freeradius/logs:/var/log/freeradius"
+    - "./opt/freeradius/config/dictionary:/usr/share/freeradius"
+    environment:
+      # Database connection details if using a database
+      - DB_HOST=mysql
+      - DB_USER=radius
+      - DB_PASSWORD=radpass
+      - DB_NAME=radius
+    restart: always
+
+  mysql:
+    image: mysql:8.0
+    container_name: freeradius-mysql
+    volumes:
+     - "./opt/freeradius/mysql/conf.d:/etc/mysql/conf.d
+     - "./opt/freeradius/mysql/initdb.d:/docker-entrypoint-initdb.d"
+     - "./opt/freeradius/mysql/data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: 111111
+      MYSQL_DATABASE: radius
+      MYSQL_USER: radius
+      MYSQL_PASSWORD: radpass
+      MYSQL_ROOT_HOST: "%"
+    restart: always
