@@ -10,9 +10,9 @@ services:
      - "1812:1812"
      - "1813:1813"
     volumes:
-    - "./opt/freeradius/config/freeradius:/etc/freeradius"
-    - "./opt/freeradius/logs:/var/log/freeradius"
-    - "./opt/freeradius/config/dictionary:/usr/share/freeradius"
+    - "/opt/freeradius/config/freeradius:/etc/freeradius"
+    - "/opt/freeradius/logs:/var/log/freeradius"
+    - "/opt/freeradius/config/dictionary:/usr/share/freeradius"
     environment:
       # Database connection details if using a database
       - DB_HOST=mysql
@@ -25,9 +25,9 @@ services:
     image: mysql:8.0
     container_name: freeradius-mysql
     volumes:
-     - "./opt/freeradius/mysql/conf.d:/etc/mysql/conf.d"
-     - "./opt/freeradius/mysql/initdb.d:/docker-entrypoint-initdb.d"
-     - "./opt/freeradius/mysql/data:/var/lib/mysql"
+     - "/opt/freeradius/mysql/conf.d:/etc/mysql/conf.d"
+     - "/opt/freeradius/mysql/initdb.d:/docker-entrypoint-initdb.d"
+     - "/opt/freeradius/mysql/data:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: radius
