@@ -9,7 +9,7 @@ services:
     ports:
      - "1812:1812"
      - "1813:1813"
-#     - "3306:3306"
+#     - "3307:3307"
     volumes:
     - "/opt/freeradius/config/freeradius:/etc/freeradius"
     - "/opt/freeradius/logs:/var/log/freeradius"
