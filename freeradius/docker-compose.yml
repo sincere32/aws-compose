@@ -20,6 +20,7 @@ services:
       - DB_USER=radius
       - DB_PASSWORD=radpass
       - DB_NAME=radius
+      - DB_PORT=3307
     restart: always
 
   mysql:
