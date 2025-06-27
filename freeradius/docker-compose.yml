@@ -34,4 +34,5 @@ services:
       MYSQL_USER: radius
       MYSQL_PASSWORD: radpass
       MYSQL_ROOT_HOST: "%"
+      MYSQL_PORT: 3306
     restart: always
